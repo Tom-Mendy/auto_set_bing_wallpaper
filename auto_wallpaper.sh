@@ -9,4 +9,4 @@ rm url
 
 sudo mv wallpaper.jpg /usr/share/wallpapers/bing_wallpaper.jpg
 
-feh --bg-scale --zoom fill /usr/share/wallpaper.jpg
+feh --bg-scale --zoom fill /usr/share/wallpapers/bing_wallpaper.jpg
