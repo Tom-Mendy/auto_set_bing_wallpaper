@@ -22,8 +22,6 @@ except ImportError:  # fall back to python2
 
 import xml.etree.ElementTree as ET
 
-import gi
-
 BING_MARKETS = [u'ar-XA',
                 u'bg-BG',
                 u'cs-CZ',
