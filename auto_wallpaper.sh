@@ -7,5 +7,4 @@ while read line; do
 done < url
 rm url
 
-# Uncommente to set i3 Wallpaper
-# mv wallpaper.jpg ~/.background-image
+mv wallpaper.jpg /usr/share/wallpaper/bing_wallpaper.jpg
