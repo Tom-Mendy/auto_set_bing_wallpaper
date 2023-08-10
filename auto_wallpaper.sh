@@ -7,4 +7,4 @@ while read line; do
 done < url
 rm url
 
-mv wallpaper.jpg /usr/share/wallpaper/bing_wallpaper.jpg
+mv wallpaper.jpg /usr/share/wallpapers/bing_wallpaper.jpg
