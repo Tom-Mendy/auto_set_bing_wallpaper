@@ -6,7 +6,7 @@ while read line; do
 	echo $line
 	curl $line --output wallpaper.jpg; 
 done < url
-mv wallpaper.jpg /home/tmendy/bing_wallpaper.jpg
+mv wallpaper.jpg /home/tmendy/.bing_wallpaper.jpg
 cd $OLDPWD
 
-feh --bg-scale --zoom fill /home/tmendy/bing_wallpaper.jpg
+feh --bg-scale --zoom fill /home/tmendy/.bing_wallpaper.jpg
