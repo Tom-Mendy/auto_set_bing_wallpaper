@@ -8,6 +8,6 @@ while read line; do
 done < url
 sudo rm url
 sudo mv wallpaper.jpg /usr/share/wallpapers/bing_wallpaper.jpg
-cd -
+cd $OLDPWD
 
 feh --bg-scale --zoom fill /usr/share/wallpapers/bing_wallpaper.jpg
