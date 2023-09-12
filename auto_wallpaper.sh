@@ -10,7 +10,7 @@ rm -f xml_page
 #dowload image
 echo $url
 curl $url --output wallpaper.jpg; 
-mv wallpaper.jpg $HOME/.bing_wallpaper.jpg
+sudo mv wallpaper.jpg /usr/share/wallpapers/bing_wallpaper.jpg
 
 #use feh to set image as wallpaper
-feh --bg-scale --zoom fill $HOME/.bing_wallpaper.jpg
+feh --bg-scale --zoom fill /usr/share/wallpapers/bing_wallpaper.jpg
