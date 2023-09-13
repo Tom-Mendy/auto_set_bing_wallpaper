@@ -13,6 +13,6 @@ curl $url --output wallpaper.jpg;
 mv wallpaper.jpg $HOME/.bing_wallpaper.jpg
 
 #use feh to set image as wallpaper
-if xhost; then
+if $(pgrep Xorg) == 0; then
     feh --bg-scale --zoom fill $HOME/.bing_wallpaper.jpg
 fi
