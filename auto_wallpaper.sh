@@ -16,9 +16,10 @@ generate_file() {
 
 
 file="$HOME/.bing_wallpaper.jpg"
+old_file="$HOME/.bing_wallpaper_old.jpg"
 
 # Check if the file exists
-if [ -e "$file" ]; then
+if [[ -e "$file" ]]; then
     # Get the modification date of the file
     file_modification_date=$(stat -c %Y "$file")
     
@@ -31,6 +32,7 @@ if [ -e "$file" ]; then
     
     # Compare the day numbers
     if [ "$file_day_number" -ne "$today_day_number" ]; then
+        cp "$file" "$old_file"
         generate_file
     else
         echo "The file's modification date is the same as today's date."
@@ -40,4 +42,8 @@ else
 fi
 
 #use feh to set image as wallpaper
-feh --bg-scale --zoom fill "$HOME"/.bing_wallpaper.jpg
+feh --bg-scale --zoom fill "$file"
+if [[ $? != 0 && -e "$old_file" ]]; then
+    echo "use old file."
+    feh --bg-scale --zoom fill "$old_file"
+fi
