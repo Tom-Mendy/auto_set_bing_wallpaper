@@ -41,9 +41,14 @@ else
     generate_file
 fi
 
-#use feh to set image as wallpaper
-feh --bg-scale --zoom fill "$file"
-if [[ $? != 0 && -e "$old_file" ]]; then
-    echo "use old file."
-    feh --bg-scale --zoom fill "$old_file"
+# check if fef is install
+if [ "$(command -v feh)" ]; then
+    #use feh to set image as wallpaper
+    feh --bg-scale --zoom fill "$file"
+    if [[ $? != 0 && -e "$old_file" ]]; then
+        echo "use old file."
+        feh --bg-scale --zoom fill "$old_file"
+    fi
+else
+    echo "feh is not install"
 fi
