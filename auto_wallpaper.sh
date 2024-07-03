@@ -14,8 +14,8 @@ generate_file() {
 	mv wallpaper.jpg "$HOME"/.bing_wallpaper.jpg
 }
 
-file="$HOME/.bing_wallpaper.jpg"
-old_file="$HOME/.bing_wallpaper_old.jpg"
+file="$HOME/.background-image"
+old_file="$HOME/.background-image_old"
 
 # Check if the file exists
 if [[ -e "$file" ]]; then
