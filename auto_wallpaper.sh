@@ -1,5 +1,8 @@
 #!/bin/sh
 
+file="$HOME/.background-image"
+old_file="$HOME/.background-image_old"
+
 generate_file() {
 	#get image url
 	curl "https://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=%sen_US" --output xml_page
@@ -11,16 +14,13 @@ generate_file() {
 	#dowload image
 	echo "$url"
 	curl "$url" --output wallpaper.jpg
-	mv wallpaper.jpg "$HOME"/.bing_wallpaper.jpg
+	mv wallpaper.jpg "${file}"
 }
 
-file="$HOME/.background-image"
-old_file="$HOME/.background-image_old"
-
 # Check if the file exists
-if [[ -e "$file" ]]; then
+if [[ -e "${file}" ]]; then
 	# Get the modification date of the file
-	file_modification_date=$(stat -c %Y "$file")
+	file_modification_date=$(stat -c %Y "${file}")
 
 	# Get today's date in seconds since the epoch
 	today_date=$(date +%s)
@@ -31,7 +31,7 @@ if [[ -e "$file" ]]; then
 
 	# Compare the day numbers
 	if [ "$file_day_number" -ne "$today_day_number" ]; then
-		cp "$file" "$old_file"
+		cp "${file}" "${old_file}"
 		generate_file
 	else
 		echo "The file's modification date is the same as today's date."
@@ -45,10 +45,10 @@ x11)
 	# check if fef is install
 	if [ "$(command -v feh)" ]; then
 		#use feh to set image as wallpaper
-		feh --bg-scale --zoom fill "$file"
-		if [[ $? != 0 && -e "$old_file" ]]; then
+		feh --bg-scale --zoom fill "${file}"
+		if [[ $? != 0 && -e "${old_file}" ]]; then
 			echo "use old file."
-			feh --bg-scale --zoom fill "$old_file"
+			feh --bg-scale --zoom fill "${old_file}"
 		fi
 	else
 		echo "feh is not install"
@@ -60,8 +60,8 @@ wayland)
 		hyprpaper &
 		monitor=$(hyprctl monitors | grep Monitor | awk '{print $2}')
 		hyprctl hyprpaper unload all
-		hyprctl hyprpaper preload "$file"
-		hyprctl hyprpaper wallpaper "$monitor, $file"
+		hyprctl hyprpaper preload "${file}"
+		hyprctl hyprpaper wallpaper "${monitor}, ${file}"
 	else
 		echo "hyprpaper is not install"
 	fi
