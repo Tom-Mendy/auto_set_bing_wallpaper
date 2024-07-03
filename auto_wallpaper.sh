@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 generate_file() {
 	#get image url
